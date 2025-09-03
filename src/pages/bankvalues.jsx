@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { banks } from "../banks";
+import { ArrowLeft, Search } from "lucide-react";
 
 export default function Bankvalues() {
     const [search, setSearch] = useState("");
@@ -14,62 +15,121 @@ export default function Bankvalues() {
     );
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl font-bold">Bank Values</h1>
-                <Link
-                    to="/"
-                    className="text-blue-600 hover:underline text-sm font-medium"
-                >
-                    ← Back to Validator
-                </Link>
-            </div>
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-6 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                {/* Header */}
+                <div className="bg-blue-600 text-white p-4 md:p-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div>
+                            <h1 className="text-2xl md:text-3xl font-bold">Bank Values Reference</h1>
+                            <p className="mt-1 text-blue-100 opacity-90">
+                                Use these bank codes for CSV batch validation
+                            </p>
+                        </div>
+                        <Link
+                            to="/"
+                            className="inline-flex items-center px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium text-sm"
+                        >
+                            <ArrowLeft className="h-4 w-4 mr-2" />
+                            Back to Validator
+                        </Link>
+                    </div>
+                </div>
 
-            <p className="mb-4 text-gray-700">
-                Use the following <span className="font-semibold">Bank Values</span> in
-                your CSV upload for batch validation:
-            </p>
+                <div className="p-4 md:p-6">
+                    {/* Search Input */}
+                    <div className="relative mb-6">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Search className="h-5 w-5 text-gray-400" />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search bank by name or code..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        />
+                    </div>
 
-            {/* Search Input */}
-            <input
-                type="text"
-                placeholder="Search bank by name or value..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full p-2 border rounded-lg mb-4 focus:outline-none focus:ring focus:ring-blue-200"
-            />
+                    {/* Info Card */}
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-6">
+                        <h3 className="font-medium text-blue-800 mb-2">How to use these values:</h3>
+                        <ul className="text-sm text-blue-700 space-y-1">
+                            <li>• Use the 6-digit bank code in your CSV files</li>
+                            <li>• Format: Account Number, Bank Code (no headers)</li>
+                            <li>• Maximum 50 rows per batch upload</li>
+                        </ul>
+                    </div>
 
-            {/* Bank Table */}
-            <div className="overflow-x-auto">
-                <table className="w-full border border-gray-300 rounded-lg shadow-sm">
-                    <thead>
-                    <tr className="bg-gray-100">
-                        <th className="border px-4 py-2 text-left">S/N</th>
-                        <th className="border px-4 py-2 text-left">Bank Name</th>
-                        <th className="border px-4 py-2 text-left">Bank Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {filteredBanks.map((bank, idx) => (
-                        <tr key={bank.value} className="hover:bg-gray-50">
-                            <td className="border px-4 py-2">{idx + 1}</td>
-                            <td className="border px-4 py-2">{bank.label}</td>
-                            <td className="border px-4 py-2 font-mono">{bank.value}</td>
-                        </tr>
-                    ))}
-                    {filteredBanks.length === 0 && (
-                        <tr>
-                            <td
-                                colSpan="3"
-                                className="text-center text-gray-500 py-4 italic"
+                    {/* Results Count */}
+                    <div className="mb-4 flex justify-between items-center">
+                        <p className="text-sm text-gray-600">
+                            Showing {filteredBanks.length} of {banks.length} banks
+                        </p>
+                        {search && (
+                            <button
+                                onClick={() => setSearch("")}
+                                className="text-sm text-blue-600 hover:text-blue-800"
                             >
-                                No banks found.
-                            </td>
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
+                                Clear search
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Bank Table */}
+                    <div className="overflow-hidden border border-gray-200 rounded-lg shadow-sm">
+                        <div className="overflow-x-auto">
+                            <table className="w-full">
+                                <thead className="bg-gray-50">
+                                <tr>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                        S/N
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                        Bank Name
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                        Bank Code
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                {filteredBanks.map((bank, idx) => (
+                                    <tr key={bank.value} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            {idx + 1}
+                                        </td>
+                                        <td className="px-4 py-3 text-sm text-gray-800">
+                                            {bank.label}
+                                        </td>
+                                        <td className="px-4 py-3 whitespace-nowrap">
+                                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 font-mono">
+                                                    {bank.value}
+                                                </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {filteredBanks.length === 0 && (
+                                    <tr>
+                                        <td colSpan="3" className="px-4 py-8 text-center">
+                                            <div className="text-gray-500 italic">
+                                                No banks found matching "{search}"
+                                            </div>
+                                            <button
+                                                onClick={() => setSearch("")}
+                                                className="mt-2 text-blue-600 hover:text-blue-800 text-sm"
+                                            >
+                                                Clear search
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );
