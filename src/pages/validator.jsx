@@ -394,7 +394,12 @@ function Validator() {
                                 <p>3. Save your file as <b>CSV</b> (comma-separated values).</p>
                                 <p>4. Upload the CSV file and click <b>Validate</b> to process up to 50 accounts at once.</p>
                                 <p>Example format:</p>
-                                <img src="../../public/table-sample.png" alt="CSV sample table" className="border rounded-lg mt-2" />
+                                <img
+                                    src="/table-sample.png"
+                                    alt="Sample Table"
+                                    className="rounded-lg shadow-md mt-4"
+                                />
+                                {/*<img src="../../public/table-sample.png" alt="CSV sample table" className="border rounded-lg mt-2" />*/}
                             </div>
                         </details>
 
