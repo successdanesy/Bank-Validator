@@ -19,7 +19,8 @@ function App() {
     const [batchStatus, setBatchStatus] = useState("");
     const [batchError, setBatchError] = useState(null);
 
-    const API_TOKEN = "A5JZazoWQCKMzwNIwrC1vMhIQXbvs0xcr71fBBys8a0dabc4";
+    const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+    // const API_TOKEN = "A5JZazoWQCKMzwNIwrC1vMhIQXbvs0xcr71fBBys8a0dabc4";
 
     const priorityBanks = [
         { value: "000015", label: "ZENITH BANK" },
@@ -60,6 +61,7 @@ function App() {
         setResults([]);
         setProgress(0);
         setStatusText("Validating with selected bank...");
+
 
         try {
             const response = await fetch(
