@@ -23,7 +23,8 @@ export default function Bankvalues() {
                         <div>
                             <h1 className="text-2xl md:text-3xl font-bold">Bank Values Reference</h1>
                             <p className="mt-1 text-blue-100 opacity-90">
-                                Use these bank codes for CSV batch validation
+                                We do not make use of the official bank code list from CBN. <br /> However we have assigned each bank
+                                to a unique value code for easy tracking. <br /> Use these bank value codes for your CSV batch validation.
                             </p>
                         </div>
                         <Link
@@ -56,8 +57,8 @@ export default function Bankvalues() {
                         <h3 className="font-medium text-blue-800 mb-2">How to use these values:</h3>
                         <ul className="text-sm text-blue-700 space-y-1">
                             <li>• Use the 6-digit bank code in your CSV files</li>
-                            <li>• Format: Account Number, Bank Code (no headers)</li>
-                            <li>• Maximum 50 rows per batch upload</li>
+                            <li>• Format: Account Number, Bank Code</li>
+                            <li>• Maximum 50 rows per batch upload (Rate limit)</li>
                         </ul>
                     </div>
 

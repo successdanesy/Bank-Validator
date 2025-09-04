@@ -539,15 +539,15 @@ function Validator() {
                                         <div>
                                             <h3 className="font-medium text-green-900">CSV Format Requirements</h3>
                                             <ul className="text-sm text-green-800 mt-2 space-y-1">
-                                                <li>• Two columns: <strong>Account Number</strong>, <strong>Bank Code</strong></li>
-                                                <li>• No headers allowed </li>
-                                                <li>• Maximum 39 rows per upload</li>
+                                                <li>• Two columns: <strong>Account Number</strong>, <strong>Name Validation</strong></li>
+                                                <li>• Maximum 50 rows per upload</li>
                                                 <li>• Account numbers must be 10 digits</li>
-                                                <li>• Bank codes must be 6 digits (check bank values guide)</li>
+                                                <li>• Bank codes must be 6 digits
+                                                    <Link to="/bankvalues" className="text-green-600 underline text-sm mt-2">
+                                                            (Check valid bank codes here)
+                                                    </Link>
+                                                </li>
                                             </ul>
-                                            <Link to="/bankvalues" className="text-green-600 underline text-sm mt-2 block">
-                                                Check valid bank codes
-                                            </Link>
                                             <p>Example format:</p>
                                             <img
                                                 src="/table-sample.png"
