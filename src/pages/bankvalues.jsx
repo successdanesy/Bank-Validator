@@ -21,10 +21,12 @@ export default function Bankvalues() {
                 <div className="bg-blue-600 text-white p-4 md:p-6">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div>
-                            <h1 className="text-2xl md:text-3xl font-bold">Bank Values Reference</h1>
+                            <h1 className="text-2xl md:text-3xl font-bold">Bank Institution Code Reference</h1>
                             <p className="mt-1 text-blue-100 opacity-90">
-                                We do not make use of the official bank code list from CBN. <br /> However we have assigned each bank
-                                to a unique value code for easy tracking. <br /> Use these bank value codes for your CSV batch validation.
+                                The institution codes shown here are based on <strong>our API's internal Mapping.</strong> <br />
+                                They may look different from the Official Central bank of Nigeria (CBN) codes you might know. <br />
+
+                                Please use these codes exactly as listed whenever you are validating accounts through this system.
                             </p>
                         </div>
                         <Link
@@ -56,8 +58,8 @@ export default function Bankvalues() {
                     <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-6">
                         <h3 className="font-medium text-blue-800 mb-2">How to use these values:</h3>
                         <ul className="text-sm text-blue-700 space-y-1">
-                            <li>• Use the 6-digit bank code in your CSV files</li>
-                            <li>• Format: Account Number, Bank Code</li>
+                            <li>• Use the 6-digit code in your CSV files</li>
+                            <li>• Format: Account Number, Institution Code</li>
                             <li>• Maximum 50 rows per batch upload (Rate limit)</li>
                         </ul>
                     </div>
