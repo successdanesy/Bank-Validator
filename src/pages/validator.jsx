@@ -743,7 +743,7 @@ function Validator() {
                             </a>
                         </div>
                         <p className="footer-note text-xs md:text-sm text-gray-500">
-                            © 2025 Success Chukwuemeka. All rights reserved.
+                            © {new Date().getFullYear()} Bank Validator App. All rights reserved.
                         </p>
                     </div>
                 </footer>
