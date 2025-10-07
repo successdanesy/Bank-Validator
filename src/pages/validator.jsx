@@ -277,7 +277,7 @@ function Validator() {
                         <div className="flex items-center space-x-3">
                             <Shield className="h-8 w-8 text-blue-600" />
                             <div>
-                                <h1 className="text-xl md:text-2xl font-bold text-gray-900">SuccessValidator</h1>
+                                <h1 className="text-xl md:text-2xl font-bold text-gray-900">BankValidatorApp</h1>
                                 <p className="text-xs text-gray-500">by Success Chukwuemeka</p>
                             </div>
                         </div>
